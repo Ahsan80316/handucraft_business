@@ -61,11 +61,8 @@ const PopularMedicalCamps = () => {
               <p className="text-sm text-gray-600 mb-2">
                 <strong>Likes:</strong> {business.likes}
               </p>
-              <p className="text-sm text-gray-600 mb-4">
-                {business.description}
-              </p>
               <div className="flex justify-center mt-2">
-                <Link to={`/camp-Details/${business._id}`}>
+                <Link to={`/business-details/${business._id}`}>
                   <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-4 transition duration-300 ease-in-out transform hover:scale-105">
                     View Details
                   </button>
@@ -75,7 +72,7 @@ const PopularMedicalCamps = () => {
           ))}
         </div>
         <Link
-          to="/availableCamp"
+          to="/allBusiness"
           className="bg-red-500 text-white px-4 py-2 rounded block text-center my-4"
         >
           See All Camps

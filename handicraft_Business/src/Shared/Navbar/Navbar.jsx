@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { FaStream, FaSignOutAlt } from 'react-icons/fa';
-import { BiLogIn } from 'react-icons/bi';
-import { CgProfile } from 'react-icons/cg';
+import { BiLogIn } from "react-icons/bi";
+import { CgProfile } from "react-icons/cg";
+import { FaSignOutAlt, FaStream } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 
 const Navbar = () => {
@@ -10,7 +10,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(prevState => !prevState);
+    setIsMobileMenuOpen((prevState) => !prevState);
   };
 
   const navLinkStyles = `
@@ -24,7 +24,10 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-3 md:py-4">
           <NavLink to="/" className="flex items-center py-2">
             <FaStream className="h-8 w-8 text-gray-700 mr-2" />
-            <span className="font-semibold text-gray-700 text-lg"> Bangladeshi Handicrafts </span>
+            <span className="font-semibold text-gray-700 text-lg">
+              {" "}
+              Bangladeshi Handicrafts{" "}
+            </span>
           </NavLink>
           <div className="md:hidden">
             <button onClick={toggleMobileMenu} className="mobile-menu-button">
@@ -42,10 +45,15 @@ const Navbar = () => {
             </button>
           </div>
           <div className="hidden md:flex items-center space-x-1">
-            <NavLink to="/" className={navLinkStyles}>Home</NavLink>
-            <NavLink to="/availableCamp" className={navLinkStyles}>Blogs</NavLink>
-            <NavLink to="/contactUs" className={navLinkStyles}>Contact us</NavLink>
-           
+            <NavLink to="/" className={navLinkStyles}>
+              Home
+            </NavLink>
+            <NavLink to="/blogs" className={navLinkStyles}>
+              Blogs
+            </NavLink>
+            <NavLink to="/contactUs" className={navLinkStyles}>
+              Contact us
+            </NavLink>
           </div>
           <div className="hidden md:flex items-center">
             {user?.email ? (
@@ -59,14 +67,22 @@ const Navbar = () => {
                 ) : (
                   <CgProfile className="h-6 w-6 text-gray-700" />
                 )}
-                <span className="text-gray-700 text-sm">{user.displayName}</span>
-                <button onClick={logout} className="flex items-center gap-1 text-red-500 hover:text-red-700">
+                <span className="text-gray-700 text-sm">
+                  {user.displayName}
+                </span>
+                <button
+                  onClick={logout}
+                  className="flex items-center gap-1 text-red-500 hover:text-red-700"
+                >
                   <FaSignOutAlt className="text-lg" />
                   <span className="text-sm">Logout</span>
                 </button>
               </div>
             ) : (
-              <NavLink to="/login" className="flex items-center gap-1 text-gray-700 hover:text-blue-500">
+              <NavLink
+                to="/login"
+                className="flex items-center gap-1 text-gray-700 hover:text-blue-500"
+              >
                 <BiLogIn className="text-lg" />
                 <span className="text-sm">Login</span>
               </NavLink>
@@ -74,11 +90,23 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+      <div className={`md:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}>
         <ul className="space-y-2">
-          <li><NavLink to="/" className={navLinkStyles}>Home</NavLink></li>
-          <li><NavLink to="/availableCamp" className={navLinkStyles}>Blogs</NavLink></li>
-          <li><NavLink to="/contactUs" className={navLinkStyles}>Contact us</NavLink></li>
+          <li>
+            <NavLink to="/" className={navLinkStyles}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/blogs" className={navLinkStyles}>
+              Blogs
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/contactUs" className={navLinkStyles}>
+              Contact us
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>

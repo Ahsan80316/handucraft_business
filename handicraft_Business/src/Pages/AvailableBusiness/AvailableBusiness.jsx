@@ -35,7 +35,7 @@ const AvailableCamps = () => {
       </Helmet>
       <Container>
         <div className=" mt-32 grid md:grid-cols-3 gap-4">
-          {(allBusiness.map((camp) => <Campcard key={camp.id} camp={camp} />))}
+          {(allBusiness.map((business) => <Campcard key={business.id} business={business} />))}
         </div>
       </Container>
     </>

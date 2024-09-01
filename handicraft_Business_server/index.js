@@ -31,7 +31,7 @@ async function run() {
       res.send(result);
     });
 
-    app.get("/camp-Details/:_id", async (req, res) => {
+    app.get("/business-details/:_id", async (req, res) => {
       const id = req.params._id;
       const query = {
         _id: new ObjectId(id),
