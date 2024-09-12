@@ -1,6 +1,10 @@
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { useContext } from 'react';
+import { themeContext } from '../../context/ContextApi'; // Adjust the import path as needed
 
 const Footer = () => {
+    const { darkMode } = useContext(themeContext); // Assuming you have darkMode in your themeContext
+
     // Replace the following with your actual contact information and social media links
     const contactInfo = {
         address: "123 Artisan Street, Dhaka, Bangladesh",
@@ -25,7 +29,7 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="bg-gray-900  text-white py-6">
+        <footer className={`py-6 ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-800'}`}>
             <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
                 <div className="mb-4 md:mb-0">
                     <h3 className="text-2xl font-semibold">Contact Us</h3>
@@ -35,14 +39,24 @@ const Footer = () => {
                 </div>
                 <div className="flex flex-wrap space-x-4 mb-4 md:mb-0">
                     {importantLinks.map((link, index) => (
-                        <a key={index} href={link.url} className="hover:underline">
+                        <a
+                            key={index}
+                            href={link.url}
+                            className={`hover:underline ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}
+                        >
                             {link.text}
                         </a>
                     ))}
                 </div>
                 <div className="flex space-x-4">
                     {socialMediaLinks.map((social, index) => (
-                        <a key={index} href={social.url} target="_blank" rel="noopener noreferrer">
+                        <a
+                            key={index}
+                            href={social.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`text-2xl ${darkMode ? 'text-gray-400' : 'text-gray-800'}`}
+                        >
                             {social.icon}
                         </a>
                     ))}

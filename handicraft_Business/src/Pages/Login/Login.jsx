@@ -15,7 +15,6 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const LoginPage = () => {
   const { signIn, setLoading } = useContext(AuthContext)
   const location = useLocation();
-  console.log(location);
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();

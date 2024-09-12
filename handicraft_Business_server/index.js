@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const jwt = require("jsonwebtoken");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const app = express();
 const port = process.env.PORT || 4000;
@@ -25,6 +24,8 @@ async function run() {
 
     const dataCollection = client.db("BangladeshiHandicrafts").collection("productData");
     const reviewsCollection = client.db("BangladeshiHandicrafts").collection("reviews");
+    const blogsCollection = client.db('BangladeshiHandicrafts').collection('blogs');
+    const contactCollection = client.db("BangladeshiHandicrafts").collection("contactMessages");
 
     app.get("/allBusiness", async (req, res) => {
       const result = await dataCollection.find().toArray();
@@ -53,7 +54,43 @@ async function run() {
       const result = await reviewsCollection.find().toArray();
       res.send(result);
     });
+    
+    app.get('/blogs', async (req, res) => {
+      try {
+        const result = await blogsCollection.find().toArray();
+        res.json(result);
+      } catch (err) {
+        res.status(500).send('Error retrieving blogs');
+      }
+    });
 
+    // POST endpoint to handle contact form submissions
+    app.post('/contact-info', async (req, res) => {
+      const { name, email, subject, message } = req.body;
+      
+      // Validation (optional)
+      if (!name || !email || !subject || !message) {
+        return res.status(400).send({ message: 'All fields are required' });
+      }
+
+      try {
+        const newContact = {
+          name,
+          email,
+          subject,
+          message,
+          date: new Date()
+        };
+        const result = await contactCollection.insertOne(newContact);
+
+        res.status(201).send({
+          message: 'Contact information submitted successfully',
+          insertedId: result.insertedId,
+        });
+      } catch (error) {
+        res.status(500).send({ message: 'Server Error', error: error.message });
+      }
+    });
 
 
 

@@ -85,7 +85,7 @@ const SignUp = () => {
         <title>MediAssist Hub|SignUp</title>
       </Helmet>
       <Container>
-        <div className="card flex flex-col md:flex-row items-center  mt-32 mb-4 card-side bg-base-100 shadow-xl ">
+        <div className="card flex flex-col md:flex-row items-center  mt-32 mb-4 h-full card-side bg-base-100 shadow-xl ">
           <div className="flex-1">
             <figure>
               <img src={img1} alt="Movie" />
@@ -190,8 +190,8 @@ const SignUp = () => {
                 </span>
               </div>
 
-              <p className="text-center text-gray-500 text-xs">
-                &copy;2023 MediAssist All rights reserved.
+              <p className="text-center text-gray-500 text-xs mb-2">
+                &copy;2024 Bangladeshi Handicrafts All rights reserved.
               </p>
             </div>
           </div>

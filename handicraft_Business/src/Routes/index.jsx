@@ -7,6 +7,9 @@ import LoginPage from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import AvailableBusiness from "../Pages/AvailableBusiness/AvailableBusiness.jsx";
 import ContactUs from "../Pages/Home/ContactUs/ContactUs";
+import BlogsPage from "../Pages/Blogs/Blogs.jsx";
+import MyFavoriteBusinesses from "../Pages/FavoriteBusinesses/MyFavoriteBusinesses.jsx";
+import PrivateRoutes from "./PrivateRoutes/PrivateRoutes.jsx";
 
 const routes = createBrowserRouter([
     {
@@ -37,6 +40,14 @@ const routes = createBrowserRouter([
         {
             path:'/signUp',
             element: <SignUp/>,
+        },
+        {
+            path:'/blogs',
+            element: <BlogsPage/>,
+        },
+        {
+            path:'/favorite',
+            element: <PrivateRoutes><MyFavoriteBusinesses/></PrivateRoutes>
         },
 
         
