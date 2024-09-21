@@ -165,6 +165,51 @@ const Navbar = () => {
               My Favorite
             </NavLink>
           </li>
+
+          {/* User Login/Logout section for mobile */}
+          <li className="border-t border-gray-200 pt-2 pb-2">
+            {user?.email ? (
+              <div className="flex items-center gap-2">
+                {user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt="User Profile"
+                    className="h-8 w-8 rounded-full object-cover"
+                  />
+                ) : (
+                  <CgProfile
+                    className={`h-6 w-6 ${
+                      darkMode ? "text-white" : "text-gray-700"
+                    }`}
+                  />
+                )}
+                <span
+                  className={`text-sm ${
+                    darkMode ? "text-white" : "text-gray-700"
+                  }`}
+                >
+                  {user.displayName}
+                </span>
+                <button
+                  onClick={logout}
+                  className="flex items-center gap-1 text-red-500 hover:text-red-700"
+                >
+                  <FaSignOutAlt className="text-lg" />
+                  <span className="text-sm">Logout</span>
+                </button>
+              </div>
+            ) : (
+              <NavLink
+                to="/login"
+                className={`flex items-center gap-1 ${
+                  darkMode ? "text-white" : "text-gray-700 hover:text-blue-500"
+                }`}
+              >
+                <BiLogIn className="text-lg" />
+                <span className="text-sm">Login</span>
+              </NavLink>
+            )}
+          </li>
         </ul>
       </div>
     </nav>
