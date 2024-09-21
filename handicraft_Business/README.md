@@ -42,8 +42,8 @@ This project includes the following main features:
   - Blogs cover topics such as crafting techniques, interviews with artisans, and tips for maintaining handmade products.
 
 - Dark Mode / Light Mode:
-- Users can toggle between dark and light themes.
-- A map displays the locations of different handicraft businesses.
+  - Users can toggle between dark and light themes.
+  - A map displays the locations of different handicraft businesses.
 
 ## Technologies Used
 
